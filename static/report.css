@@ -1,0 +1,188 @@
+        /* Global Styles */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        header h3 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ccc;
+        }
+
+        /* Hero Section Styles */
+
+        .hero {
+            background-color: #f0f0f0;
+            padding: 2em;
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin-top: 0;
+        }
+
+        /* Button Styles */
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        button:active {
+            background-color: #555;
+        }
+
+        /* Report and Show Styles */
+
+        .report,
+        .show {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .report ul,
+        .show ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .report li,
+        .show li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .report li:last-child,
+        .show li:last-child {
+            border-bottom: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button-container button[type="submit"]:first-child {
+            margin-left: 0;
+        }
+
+        .button-container button[type="submit"]:last-child {
+            margin-right: 0;
+        }
+
+        .button-container button[type="submit"] {
+            margin: 0 10px;
+        }
+
+        .item>button:nth-child(1),
+        .item>button:nth-child(2) {
+            margin: 41px auto;
+            display: block;
+            display: inline;
+            margin-right: auto;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+          }
+      
+          .popup button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            cursor: pointer;
+          }
+      
+          /* For the backdrop effect */
+          .backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+          }
+        .income_popup,
+        .expense_popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            display: none;
+            z-index: 1000;
+        }
+
+        
+
+        .close-popup {
+            background-color: red;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Report</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='report.css')}}">
+    
+</head>
+<header>
+    <h3>Your Personal Finance Manager</h3>
+    <nav>
+        <ul>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <section class="hero">
+        <h1>Welcome to Your Personal Finance Manager</h1>
+        <p>Take control of your finances with our easy-to-use expense and income tracking system. Easily log your daily
+            expenses and income, and get a clear picture of your financial situation.</p>
+    </section>
+    <form action="/finance_report" method="post">
+        <div class="button-container">
+            <button type="submit" value="add" name="user_option">Add_transaction</button>
+            <button type="submit" value="edit" name="user_option">Edit_transaction</button>
+            <button type="submit" value="delete" name="user_option">Delete_transaction</button>
+            <button type="submit" value="view" name="user_option">Show_transaction</button>
+            <button type="submit" value="get_report" name="user_option">Get Final Report</button>
+        </div>
+    </form>
+    <form action="/add_transaction" method="POST">
+        <h4>Choice your option what you want add income or expense</h4>
+        <div class="item">
+            <button type="button" onclick="showIncomePopup()">Income</button>
+            <button type="button" onclick="showExpensePopup()">Expense</button>
+        </div>
+
+        <div class="income_popup">
+            <form action="/add_transaction" method="POST">
+                <h2>Enter Income Details</h2>
+                <input type="hidden" name="select_option" value="income">
+                <label for="income_amount">Amount:</label>
+                <input type="number" id="income_amount" name="income_amount" required><br><br>
+                <label for="income_description">Description:</label>
+                <input type="text" id="income_description" name="income_description" required><br><br>
+                <label for="income_date">Date:</label>
+                <input type="date" id="income_date" name="income_date" required><br><br>
+                <button type="submit">Submit</button>
+                <button type="button" class="close-popup" onclick="closeIncomePopup()">Close</button>
+            </form>
+        </div>
+
+        <!-- Popup for Expense -->
+        <div class="expense_popup">
+            <form action="/add_transaction" method="POST">
+                <h2>Enter Expense Details</h2>
+                <input type="hidden" name="select_option" value="expense">
+                <label for="expense_amount">Amount:</label>
+                <input type="number" id="expense_amount" name="expense_amount" required><br><br>
+                <label for="expense_description">Description:</label>
+                <input type="text" id="expense_description" name="expense_description" required><br><br>
+                <label for="expense_date">Date:</label>
+                <input type="date" id="expense_date" name="expense_date" required><br><br>
+                <button type="submit">Submit</button>
+                <button type="button" class="close-popup" onclick="closeExpensePopup()">Close</button>
+            </form>
+        </div>
+
+        <script>
+            // Functions to show the popups
+            function showIncomePopup() {
+                document.querySelector('.income_popup').style.display = 'block';
+            }
+
+            function showExpensePopup() {
+                document.querySelector('.expense_popup').style.display = 'block';
+            }
+
+            // Functions to close the popups
+            function closeIncomePopup() {
+                document.querySelector('.income_popup').style.display = 'none';
+            }
+
+            function closeExpensePopup() {
+                document.querySelector('.expense_popup').style.display = 'none';
+            }
+        </script>
+    </form>
+</body>
+
+</html>

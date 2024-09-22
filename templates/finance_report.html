@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Report</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='report.css')}}">
+  <style>
+    /* Pop-up styling */
+    
+  </style>
+</head>
+
+<header>
+  <h3>Your Personal Finance Manager</h3>
+  <nav>
+    <ul>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+
+<body>
+  <form action="/finance_report" method="POST">
+    <section class="hero">
+      <h1>Welcome to Your Personal Finance Manager</h1>
+      <p>Take control of your finances with our easy-to-use expense and income tracking system. Easily log your daily
+        expenses and income, and get a clear picture of your financial situation.</p>
+    </section>
+    
+    <div class="button-container">
+      <button type="submit" value="add" name="user_option">Add_transaction</button>
+      <button type="submit" value="edit" name="user_option">Edit_transaction</button>
+      <button type="submit" value="delete" name="user_option">Delete_transaction</button>
+      <button type="button" value="show" name="user_option" id="showTransactionBtn">Show_transaction</button>
+      <button type="submit" value="get_report" name="user_option">Get Final Report</button>
+    </div> 
+    {{report}}
+    {{msg}}
+  </form>
+
+  <!-- Pop-up for transaction options -->
+  <div class="backdrop" id="backdrop"></div>
+  <div class="popup" id="popup">
+    <h3>Select Transaction Type</h3>
+    <form action="/show_transaction" method="post">
+      <button type="submit" value="income" name="select_option">Income</button>
+      <button type="submit" value="expense" name="select_option">Expense</button>
+    </form>
+    <button id="closePopup">Close</button>
+  </div>
+  <form action="/show_transaction" method="post"></form>
+    <div class="report">
+      <ul>
+        <!-- {{show}} -->
+        {% for tran in show %}
+        <li>
+          ID: {{ tran[0] }}<br>
+          User ID: {{ tran[1] }}<br>
+          Amount: {{ tran[2] }} <br>
+          Description: {{ tran[3] }} <br>
+          Date: {{ tran[4] }} <br>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </form>
+
+  <script>
+    // Get elements
+    const showTransactionBtn = document.getElementById('showTransactionBtn');
+    const popup = document.getElementById('popup');
+    const backdrop = document.getElementById('backdrop');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    // Show the pop-up when the Show_transaction button is clicked
+    showTransactionBtn.addEventListener('click', function() {
+      popup.style.display = 'block';
+      backdrop.style.display = 'block';
+    });
+
+    // Hide the pop-up when the close button is clicked
+    closePopupBtn.addEventListener('click', function() {
+      popup.style.display = 'none';
+      backdrop.style.display = 'none';
+    });
+
+    // Hide the pop-up when clicking on the backdrop
+    backdrop.addEventListener('click', function() {
+      popup.style.display = 'none';
+      backdrop.style.display = 'none';
+    });
+  </script>
+
+</body>
+
+</html>

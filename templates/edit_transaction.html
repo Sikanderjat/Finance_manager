@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Report</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='report.css')}}">
+    
+</head>
+
+<header>
+    <h3>Your Personal Finance Manager</h3>
+    <nav>
+        <ul>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <section class="hero">
+        <h1>Welcome to Your Personal Finance Manager</h1>
+        <p>Take control of your finances with our easy-to-use expense and income tracking system. Easily log your daily expenses and income, and get a clear picture of your financial situation.</p>
+    </section>
+    <form action="/finance_report" method="post">
+        <div class="button-container">
+            <button type="submit" value="add" name="user_option">Add_transaction</button>
+            <button type="submit" value="edit" name="user_option">Edit_transaction</button>
+            <button type="submit" value="delete" name="user_option">Delete_transaction</button>
+            <button type="submit" value="view" name="user_option">Show_transaction</button>
+            <button type="submit" value="get_report" name="user_option">Get Final Report</button>
+        </div>
+    </form>
+    <h4>Choice your option what you want Edit income or expense</h4>
+    <!-- Buttons to show Income and Expense pop-ups -->
+    <div class="item">
+        <button type="button" onclick="showIncomePopup()">Income</button>
+        <button type="button" onclick="showExpensePopup()">Expense</button>
+    </div>
+
+    <!-- Income Popup -->
+    <div class="income_popup">
+        <form action="/edit_transaction" method="POST">
+            <h2>Enter Income Details</h2>
+            <input type="hidden" name="edit_select_option" value="income">
+            <label for="income_amount">Income ID:</label>
+            <input type="number" id="income_id" name="edit_income_id" required><br><br>
+            <label for="income_amount">Amount:</label>
+            <input type="number" id="income_amount" name="edit_income_amount" required><br><br>
+            <label for="income_description">Description:</label>
+            <input type="text" id="income_description" name="edit_income_description" required><br><br>
+            <label for="income_date">Date:</label>
+            <input type="date" id="income_date" name="edit_income_date" required><br><br>
+            <button type="submit">Submit</button>
+            <button type="button" class="close-popup" onclick="closeIncomePopup()">Close</button>
+        </form>
+    </div>
+
+    <!-- Expense Popup -->
+    <div class="expense_popup">
+        <form action="/edit_transaction" method="POST">
+            <h2>Enter Expense Details</h2>
+            <input type="hidden" name="edit_select_option" value="expense">
+            <label for="expense_amount">Expense ID:</label>
+            <input type="number" id="expense_id" name="edit_expense_id" required><br><br>
+            <label for="expense_amount">Amount:</label>
+            <input type="number" id="expense_amount" name="edit_expense_amount" required><br><br>
+            <label for="expense_description">Description:</label>
+            <input type="text" id="expense_description" name="edit_expense_description" required><br><br>
+            <label for="expense_date">Date:</label>
+            <input type="date" id="expense_date" name="edit_expense_date" required><br><br>
+            <button type="submit">Submit</button>
+            <button type="button" class="close-popup" onclick="closeExpensePopup()">Close</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to show the Income popup
+        function showIncomePopup() {
+            document.querySelector('.income_popup').style.display = 'block';
+        }
+
+        // Function to close the Income popup
+        function closeIncomePopup() {
+            document.querySelector('.income_popup').style.display = 'none';
+        }
+
+        // Function to show the Expense popup
+        function showExpensePopup() {
+            document.querySelector('.expense_popup').style.display = 'block';
+        }
+
+        // Function to close the Expense popup
+        function closeExpensePopup() {
+            document.querySelector('.expense_popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
